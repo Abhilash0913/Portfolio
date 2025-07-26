@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Abhilash - UI/UX Designer & Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1d4ed8;
+            --dark-color: #1e3a8a;
+            --light-color: #f8f9fa;
+            --accent-color: #f59e0b;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+            position: relative;
+            color: #333;
+        }
+
+        /* Animated background elements */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+        }
+
+        /* Profile picture styling */
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
+            transition: all 0.5s;
+            animation: float 6s infinite ease-in-out;
+            border: 5px solid white;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+
+        .hero-image-container:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: #333;
+            font-weight: 500;
+            margin: 0 12px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+            border-radius: 3px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            line-height: 1.2;
+        }
+
+        .hero-title span {
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title span:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 15px;
+            background: rgba(37, 99, 235, 0.2);
+            bottom: 5px;
+            left: 0;
+            z-index: -1;
+            border-radius: 5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #555;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--secondary-color);
+            transition: all 0.3s;
+            z-index: -1;
+            border-radius: 50px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:hover:before {
+            width: 100%;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+            background: transparent;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Section styling */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            bottom: -12px;
+            left: 0;
+            border-radius: 5px;
+        }
+
+        /* Card styling */
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 30px;
+            background: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+            z-index: -1;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .card-text {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Project tags */
+        .project-tag {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* Testimonial styling */
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        /* Skill bars */
+        .skill-item {
+            margin-bottom: 35px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+
+        .skill-percent {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .skill-bar {
+            height: 12px;
+            background: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 6px;
+            transition: width 1.5s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-level:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0.1) 0%,
+                    rgba(255, 255, 255, 0.3) 50%,
+                    rgba(255, 255, 255, 0.1) 100%);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Contact form */
+        .contact-form .form-control {
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            box-shadow: none;
+        }
+
+        .contact-form .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .contact-form textarea {
+            min-height: 180px;
+            resize: none;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-color) 0%, #1a1a4a 100%);
+            color: white;
+            padding: 70px 0 30px;
+            position: relative;
+        }
+
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 12px;
+            color: white;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Popup modal */
+        .project-modal .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-modal .modal-header {
+            border-bottom: none;
+            padding-bottom: 0;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1;
+        }
+
+        .project-modal .modal-body {
+            padding: 40px;
+        }
+
+        .project-modal .modal-img {
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s;
+        }
+
+        .project-modal .modal-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Animation classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .animate-on-scroll.animate {
+            opacity: 1;
+        }
+
+        .slide-up {
+            transform: translateY(60px);
+        }
+
+        .slide-up.animate {
+            transform: translateY(0);
+        }
+
+        .slide-left {
+            transform: translateX(-60px);
+        }
+
+        .slide-left.animate {
+            transform: translateX(0);
+        }
+
+        .slide-right {
+            transform: translateX(60px);
+        }
+
+        .slide-right.animate {
+            transform: translateX(0);
+        }
+
+        /* Floating elements */
+        .floating {
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                text-align: center;
+                padding-top: 100px;
+                padding-bottom: 60px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-image-container {
+                margin-top: 40px;
+                max-width: 350px;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-image-container {
+                max-width: 280px;
+            }
+        }
+
+        /* General Modal Styling */
+        .modal-body {
+            padding: 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .modal-body h3 {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body .text-muted {
+            color: #6c757d !important;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .modal-body p {
+            color: #495057;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Image Styling */
+        .modal-img {
+            max-height: 350px;
+            width: 100%;
+            object-fit: contain;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        /* Features List Styling */
+        .modal-body h5 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .modal-body ul {
+            padding-left: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body ul li {
+            margin-bottom: 0.5rem;
+            color: #495057;
+        }
+
+        /* Badge Styling */
+        .badge {
+            font-weight: 500;
+            padding: 0.35em 0.65em;
+            font-size: 0.75em;
+            border-radius: 0.25rem;
+        }
+
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+
+        /* Button Styling */
+        .btn {
+            font-size: 0.875rem;
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-outline-secondary {
+            color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .modal-img {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Flex Utilities */
+        .d-flex {
+            display: flex !important;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap !important;
+        }
+
+        .gap-2 {
+            gap: 0.5rem !important;
+        }
+
+        .mt-4 {
+            margin-top: 1.5rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        .mb-0 {
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Sri Abhilash</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2 animate-on-scroll slide-left">
+                    <h1 class="hero-title">I'm <span>Sri Abhilash</span></h1>
+                    <p class="hero-subtitle">UI/UX Designer & Developer</p>
+                    <p class="lead mb-4">Passionate about crafting intuitive and responsive interfaces for both web and
+                        mobile platforms with a focus on user-centered design.</p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-outline-primary">Contact Me</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-2 order-1 animate-on-scroll slide-right">
+                    <div class="hero-image-container">
+                        <!-- Replace with actual image of Sri Abhilash -->
+                        <img src="images/abi.jpg" alt="Sri Abhilash" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section bg-white" id="about">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll">A Little Bit About Me</h2>
+            <div class="row mt-5">
+                <div class="col-lg-12 animate-on-scroll slide-up">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="mb-4">I'm Abhilash Kodigalla</h3>
+                            <p>I'm a passionate and detail-oriented UI/UX Designer with 1 year of Intern experience
+                                specializing in Figma-based design. My work focuses on crafting intuitive and responsive
+                                interfaces for both web and mobile platforms.</p>
+                            <p>I bring a strong understanding of user-centered design, interactive prototyping, and
+                                design systems to deliver engaging digital experiences. Throughout my journey, I've
+                                collaborated with cross-functional teams to translate complex ideas into clean,
+                                user-friendly interfaces.</p>
+                            <p>From real-time healthcare and emergency platforms to e-commerce and educational
+                                dashboards, my projects reflect creativity, usability, and a deep commitment to
+                                problem-solving through design.</p>
+                            <p>I'm always excited to explore new design trends, push creative boundaries, and contribute
+                                meaningfully to products that make a difference.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll">My Projects</h2>
+            <p class="text-center mb-5 animate-on-scroll">Here are some of my recent UI/UX design projects that showcase
+                my skills and creativity.</p>
+
+            <div class="row">
+                <!-- Project 1 - Skillyterns Mobile App -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll slide-up" data-delay="0">
+                    <div class="card h-100">
+                        <img src="images/project1.jpg" class="card-img-top" alt="Skillyterns Mobile App">
+                        <div class="card-body">
+
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+
+                                <h5 class="card-title mb-0">User-Centered Mobile App Design for Skillyterns</h5>
+                                <span class="project-tag">Figma</span>
+                            </div>
+                            <p class="card-text">A comprehensive mobile application designed to enhance the learning
+                                experience for Skillyterns students with intuitive navigation and interactive features.
+                            </p>
+                            <div class="mt-auto">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#projectModal1">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 - Skillyterns Educational Website -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll slide-up" data-delay="100">
+                    <div class="card h-100">
+                        <img src="images/project2.jpg" class="card-img-top" alt="Skillyterns Educational Website">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0">UI/UX Design for Skillyterns Educational Website</h5>
+                                <span class="project-tag">Figma</span>
+                            </div>
+                            <p class="card-text">A responsive educational platform with course management, student
+                                dashboards, and interactive learning modules.</p>
+                            <div class="mt-auto">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#projectModal2">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Resin Art Landing Page -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll slide-up" data-delay="200">
+                    <div class="card h-100">
+                        <img src="images/project3.jpg" class="card-img-top" alt="Resin Art Landing Page">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0">UI/UX for Artistic Product Showcase - Resin Art Landing Page
+                                </h5>
+                                <span class="project-tag">Figma</span>
+                            </div>
+                            <p class="card-text">A visually stunning landing page showcasing resin art products with
+                                smooth animations and e-commerce functionality.</p>
+                            <div class="mt-auto">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#projectModal3">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 - Silk Saree E-commerce -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll slide-up" data-delay="0">
+                    <div class="card h-100">
+                        <img src="images/project4.jpg" class="card-img-top" alt="Silk Saree E-commerce">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0">UI/UX Design for Silk Saree E-commerce Platform</h5>
+                                <span class="project-tag">Figma</span>
+                            </div>
+                            <p class="card-text">An elegant e-commerce platform for traditional silk sarees with product
+                                zoom, color selection, and seamless checkout.</p>
+                            <div class="mt-auto">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#projectModal4">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 - Nike Landing Page -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll slide-up" data-delay="100">
+                    <div class="card h-100">
+                        <img src="images/project5.jpg" class="card-img-top" alt="Nike Landing Page">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0">Nike Landing Page - Modern UI/UX Redesign</h5>
+                                <span class="project-tag">Figma</span>
+                            </div>
+                            <p class="card-text">A dynamic landing page redesign for Nike featuring product showcases,
+                                video backgrounds, and interactive elements.</p>
+                            <div class="mt-auto">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#projectModal5">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 - Digital Campaign Posters -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll slide-up" data-delay="200">
+                    <div class="card h-100">
+                        <img src="images/project6.jpg" class="card-img-top" alt="Digital Campaign Posters">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0">Creative Posters for Digital Campaigns</h5>
+                                <span class="project-tag">Illustrator</span>
+                            </div>
+                            <p class="card-text">A collection of visually striking posters designed for various digital
+                                marketing campaigns and social media.</p>
+                            <div class="mt-auto">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#projectModal6">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section bg-white" id="skills">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll">My Skills</h2>
+            <p class="text-center mb-5 animate-on-scroll">Here are the technologies and tools I work with.</p>
+
+            <div class="row">
+                <div class="col-lg-6 animate-on-scroll slide-left">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Figma (UI/UX Design)</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Canva</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Adobe Illustrator</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 animate-on-scroll slide-right">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Prototyping</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Visual Design</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 88%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Responsive Design</span>
+                            <span class="skill-percent">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card animate-on-scroll slide-up">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Additional Skills & Expertise</h4>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-primary">Wireframing</span>
+                                <span class="badge bg-primary">Prototyping</span>
+                                <span class="badge bg-primary">Auto Layout</span>
+                                <span class="badge bg-primary">Components</span>
+                                <span class="badge bg-primary">UI Components</span>
+                                <span class="badge bg-primary">User Interface</span>
+                                <span class="badge bg-primary">User Experience</span>
+                                <span class="badge bg-primary">Responsive Design</span>
+                                <span class="badge bg-primary">Mobile First</span>
+                                <span class="badge bg-primary">Design Systems</span>
+                                <span class="badge bg-primary">Visual Design</span>
+                                <span class="badge bg-primary">Typography</span>
+                                <span class="badge bg-primary">Color Theory</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll">Some Generous Words</h2>
+            <p class="text-center mb-5 animate-on-scroll">Some of my favorite testimonials from my clients</p>
+
+            <div class="row">
+                <div class="col-md-6 animate-on-scroll slide-left">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I had grown a little bit disappointed when I realized that my work
+                            would not be taking me in any new, creative design directions. Thankfully, I found Abhilash
+                            and his creativity that goes above and beyond, proving to be exactly what I needed to take."
+                        </p>
+                        <p class="testimonial-author">Aika Chan</p>
+                    </div>
+                </div>
+                <div class="col-md-6 animate-on-scroll slide-right">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I had grown a little bit disappointed when I realized that my work
+                            would not be taking me in any new, creative design directions. Thankfully, I found Abhilash
+                            and his creativity that goes above and beyond, proving to be exactly what I needed to take."
+                        </p>
+                        <p class="testimonial-author">Aika Chan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section bg-white" id="contact">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll">Let's Work Together</h2>
+            <p class="text-center mb-5 animate-on-scroll">Have a project in mind or want to discuss potential
+                opportunities? Feel free to reach out!</p>
+
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0 animate-on-scroll slide-left">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="mb-4">Contact Info</h3>
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="icon-circle me-3">
+                                    <i class="fas fa-envelope mt-1"
+                                        style="color: var(--primary-color); font-size: 1.3rem;"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Email</h5>
+                                    <p class="mb-0">sriabhilash433@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="icon-circle me-3">
+                                    <i class="fas fa-map-marker-alt mt-1"
+                                        style="color: var(--primary-color); font-size: 1.3rem;"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Location</h5>
+                                    <p class="mb-0">India</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="icon-circle me-3">
+                                    <i class="fas fa-phone mt-1"
+                                        style="color: var(--primary-color); font-size: 1.3rem;"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Phone</h5>
+                                    <p class="mb-0">+91 6281384643</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-2">
+                                <h5 class="mb-3">Connect With Me</h5>
+                                <div class="social-links">
+                                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                                    <a href="#" title="Behance"><i class="fab fa-behance"></i></a>
+                                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 animate-on-scroll slide-right">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <h3 class="mb-4">Send Me a Message</h3>
+                            <form class="contact-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="First name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Last name" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Subject" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" class="form-control" placeholder="Email" required>
+                                    </div>
+                                </div>
+                                <textarea class="form-control" placeholder="Your message" required></textarea>
+                                <button type="submit" class="btn btn-primary">Send Message <i
+                                        class="fas fa-paper-plane ms-2"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <div class="mb-4">
+                <a href="#" class="navbar-brand text-white">Sri Abhilash</a>
+            </div>
+            <div class="social-links mb-4 justify-content-center">
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                <a href="#" title="Behance"><i class="fab fa-behance"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="mb-0">&copy; 2023 Sri Abhilash. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modals -->
+    <!-- Project Modal 1 - Skillyterns Mobile App -->
+    <div class="modal fade project-modal" id="projectModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <img src="images/project1_1.jpg" class="img-fluid rounded modal-img"
+                                alt="Skillyterns Mobile App">
+                        </div>
+                        <div class="col-lg-6">
+                            <h3>User-Centered Mobile App Design for Skillyterns</h3>
+                            <p class="text-muted mb-4">Figma Design | 2023</p>
+                            <p>A comprehensive mobile application designed to enhance the learning experience for
+                                Skillyterns students with intuitive navigation and interactive features.</p>
+                            <div class="mb-4">
+                                <h5>Key Features</h5>
+                                <ul class="mb-0">
+                                    <li>Intuitive course navigation and progress tracking</li>
+                                    <li>Interactive learning modules with quizzes</li>
+                                    <li>Personalized dashboard for students</li>
+                                    <li>Dark/light mode toggle</li>
+                                    <li>Accessibility-focused design</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Technologies Used</h5>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary">Figma</span>
+                                    <span class="badge bg-primary">UI Design</span>
+                                    <span class="badge bg-primary">UX Research</span>
+                                    <span class="badge bg-primary">Prototyping</span>
+                                    <span class="badge bg-primary">Mobile Design</span>
+                                </div>
+                                <div class="btn btn-sm btn-outline-primary mt-4">
+                                    <a
+                                        href="https://www.figma.com/design/zDTYJH529Bk5loZIy9rdo2/Untitled?node-id=0-1&p=f&t=JpfxWDloT1LDd4by-0">Live
+                                        Website</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal 2 - Skillyterns Educational Website -->
+    <div class="modal fade project-modal" id="projectModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <img src="images/project2_2.jpg" class="img-fluid rounded modal-img"
+                                alt="Skillyterns Educational Website">
+                        </div>
+                        <div class="col-lg-6">
+                            <h3>UI/UX Design for Skillyterns Educational Website</h3>
+                            <p class="text-muted mb-4">Figma Design | 2023</p>
+                            <p>A responsive educational platform with course management, student dashboards, and
+                                interactive learning modules designed to enhance the online learning experience.</p>
+                            <div class="mb-4">
+                                <h5>Key Features</h5>
+                                <ul class="mb-0">
+                                    <li>Responsive design for all devices</li>
+                                    <li>Interactive course browsing and filtering</li>
+                                    <li>Student progress tracking system</li>
+                                    <li>Instructor dashboard for course management</li>
+                                    <li>Accessible color scheme and typography</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Technologies Used</h5>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary">Figma</span>
+                                    <span class="badge bg-primary">Web Design</span>
+                                    <span class="badge bg-primary">UX Research</span>
+                                    <span class="badge bg-primary">Wireframing</span>
+                                    <span class="badge bg-primary">Responsive Design</span>
+                                </div>
+                            </div>
+                            <div class="btn btn-sm btn-outline-primary mt-4">
+                                <a
+                                    href="https://www.figma.com/design/hRudxg78qlprVk6fXCEmXa/Untitled?node-id=0-1&p=f&t=JAvuPM7MB2mZGvoP-0">Live
+                                    Website</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Project Modal 3 - Resin Art Landing Page -->
+    <div class="modal fade project-modal" id="projectModal3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <img src="images/project3_2.jpg" class="img-fluid rounded modal-img"
+                                alt="Resin Art Landing Page">
+                        </div>
+                        <div class="col-lg-6">
+                            <h3>UI/UX for Artistic Product Showcase - Resin Art Landing Page</h3>
+                            <p class="text-muted mb-4">Figma Design | 2023</p>
+                            <p>A visually stunning landing page showcasing resin art products with smooth animations and
+                                e-commerce functionality designed to highlight the artistic qualities of the products.
+                            </p>
+                            <div class="mb-4">
+                                <h5>Key Features</h5>
+                                <ul class="mb-0">
+                                    <li>High-quality product showcases with zoom functionality</li>
+                                    <li>Smooth animations and transitions</li>
+                                    <li>E-commerce functionality with cart system</li>
+                                    <li>Artist story section with interactive timeline</li>
+                                    <li>Mobile-responsive design</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Technologies Used</h5>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary">Figma</span>
+                                    <span class="badge bg-primary">UI Design</span>
+                                    <span class="badge bg-primary">E-commerce</span>
+                                    <span class="badge bg-primary">Landing Page</span>
+                                    <span class="badge bg-primary">Visual Design</span>
+                                </div>
+                            </div>
+                            <div class="btn btn-sm btn-outline-primary mt-4">
+                                <a
+                                    href="https://www.figma.com/proto/mm9XtbX8cCqX368OQlkVtr/resin?node-id=1-3&p=f&t=EWKVgCARgVZXr6os-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1">Live
+                                    Website</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Project Modal 4 - Silk Saree E-commerce -->
+    <div class="modal fade project-modal" id="projectModal4" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <img src="images/project4_2.jpg" class="img-fluid rounded modal-img"
+                                alt="Silk Saree E-commerce">
+                        </div>
+                        <div class="col-lg-6">
+                            <h3>UI/UX Design for Silk Saree E-commerce Platform</h3>
+                            <p class="text-muted mb-4">Figma Design | 2023</p>
+                            <p>An elegant e-commerce platform for traditional silk sarees with product zoom, color
+                                selection, and seamless checkout designed to showcase the intricate details of each
+                                saree.</p>
+                            <div class="mb-4">
+                                <h5>Key Features</h5>
+                                <ul class="mb-0">
+                                    <li>High-resolution product zoom for fabric details</li>
+                                    <li>Color and pattern selection interface</li>
+                                    <li>Size guide with interactive measurements</li>
+                                    <li>Secure checkout process</li>
+                                    <li>Customer account management</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Technologies Used</h5>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary">Figma</span>
+                                    <span class="badge bg-primary">E-commerce</span>
+                                    <span class="badge bg-primary">UI Design</span>
+                                    <span class="badge bg-primary">UX Research</span>
+                                    <span class="badge bg-primary">Responsive Design</span>
+                                </div>
+                            </div>
+                            <div class="btn btn-sm btn-outline-primary mt-4">
+                                <a
+                                    href="https://www.figma.com/proto/Cz96gwk1YMaHkD3IFwmm4S/Silk-saree-ecommerce?node-id=0-8&t=OpAXqzQjjWw9mpie-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1">Live
+                                    Website</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Project Modal 5 - Nike Landing Page -->
+    <div class="modal fade project-modal" id="projectModal5" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <img src="images/project5_2.jpg" class="img-fluid rounded modal-img"
+                                alt="Nike Landing Page">
+                        </div>
+                        <div class="col-lg-6">
+                            <h3>Nike Landing Page - Modern UI/UX Redesign</h3>
+                            <p class="text-muted mb-4">Figma Design | 2023</p>
+                            <p>A dynamic landing page redesign for Nike featuring product showcases, video backgrounds,
+                                and interactive elements designed to enhance user engagement and conversion rates.</p>
+                            <div class="mb-4">
+                                <h5>Key Features</h5>
+                                <ul class="mb-0">
+                                    <li>Video background with product highlights</li>
+                                    <li>Interactive product carousel</li>
+                                    <li>Size selection with visual indicators</li>
+                                    <li>Animated call-to-action elements</li>
+                                    <li>Responsive design for all devices</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Technologies Used</h5>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary">Figma</span>
+                                    <span class="badge bg-primary">UI Design</span>
+                                    <span class="badge bg-primary">Landing Page</span>
+                                    <span class="badge bg-primary">Branding</span>
+                                    <span class="badge bg-primary">Responsive Design</span>
+                                </div>
+                            </div>
+                            <div class="btn btn-sm btn-outline-primary mt-4">
+                                <a
+                                    href="https://www.figma.com/proto/B2FFJUdGBpaAS7Z6fDEi1r/Untitled?node-id=125-14&t=zODZmfgl92bGaTOf-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1">Live
+                                    Website</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Project Modal 6 - Digital Campaign Posters -->
+    <div class="modal fade project-modal" id="projectModal6" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <img src="images/project6_2.jpg.png" class="img-fluid rounded modal-img"
+                                alt="Digital Campaign Posters">
+                        </div>
+                        <div class="col-lg-6">
+                            <h3>Creative Posters for Digital Campaigns</h3>
+                            <p class="text-muted mb-4">Graphic Design | 2023</p>
+                            <p>A collection of visually striking posters designed for various digital marketing
+                                campaigns and social media, created to capture attention and communicate messages
+                                effectively.</p>
+                            <div class="mb-4">
+                                <h5>Key Features</h5>
+                                <ul class="mb-0">
+                                    <li>Bold typography and color schemes</li>
+                                    <li>Clear visual hierarchy for messaging</li>
+                                    <li>Platform-optimized designs (Instagram, Facebook, etc.)</li>
+                                    <li>Brand-consistent visual language</li>
+                                    <li>Attention-grabbing compositions</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Technologies Used</h5>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary">Adobe Photoshop</span>
+                                    <span class="badge bg-primary">Illustrator</span>
+                                    <span class="badge bg-primary">Graphic Design</span>
+                                    <span class="badge bg-primary">Visual Communication</span>
+                                    <span class="badge bg-primary">Typography</span>
+                                </div>
+                            </div>
+                            <a href="#contact" class="btn btn-outline-primary">Contact Me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles.js
+        document.addEventListener('DOMContentLoaded', function () {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": ["#2563eb", "#1d4ed8", "#f59e0b", "#1e3a8a"]
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#2563eb",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function () {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Animate elements on scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+            const animateOnScroll = function () {
+                animateElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    const delay = element.getAttribute('data-delay') || 0;
+
+                    if (elementPosition < windowHeight - 100) {
+                        setTimeout(() => {
+                            element.classList.add('animate');
+                        }, delay);
+                    }
+                });
+            };
+
+            // Initial check
+            animateOnScroll();
+
+            // Check on scroll
+            window.addEventListener('scroll', animateOnScroll);
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Animate skill bars when they come into view
+            const skillBars = document.querySelectorAll('.skill-level');
+
+            const animateSkillBars = function () {
+                skillBars.forEach(bar => {
+                    const barPosition = bar.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+
+                    if (barPosition < windowHeight - 100) {
+                        bar.style.width = bar.style.width;
+                    }
+                });
+            };
+
+            // Initial check
+            animateSkillBars();
+
+            // Check on scroll
+            window.addEventListener('scroll', animateSkillBars);
+
+            // Form submission
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Here you would typically send the form data to a server
+                    // For demo purposes, we'll just show an alert
+                    alert('Thank you for your message! I will get back to you soon.');
+                    this.reset();
+                });
+            }
+
+            // Initialize all tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+</body>
+
+</html>
